@@ -1,6 +1,7 @@
 // 1. Условные операторы. Если а – четное посчитать а*б, иначе а+б
 
-function f1_1(a, b) {
+function ifMultipleOrSum(a, b) {
+
     if (a % 2 == 0) {
         a *= b;
         console.log(a);
@@ -13,9 +14,8 @@ function f1_1(a, b) {
 
 // 2. Условные операторы. Определить какой четверти принадлежит точка с координатами (х,у)
 
-function f1_2() {
-    let x = prompt('ВВЕДИТЕ x:', '');
-    let y = prompt('ВВЕДИТЕ y:', '');
+function ifPointSectionDecart (x, y) {
+
     if (x == 0 || y == 0) {
         console.log((x == 0 && y == 0) ? 'Центр координат' : 'ось ' + ((x == 0 ? 'Y' : 'X')));
         document.write((x == 0 && y == 0) ? 'Центр координат' : 'ось ' + ((x == 0 ? 'Y' : 'X')));
@@ -27,7 +27,6 @@ function f1_2() {
         horizontal.forEach(el => {
             if (vertical.includes(el)) {
                 console.log(el + ' четверть');
-                document.write(el + ' четверть');
             }
         });
     }
@@ -35,7 +34,8 @@ function f1_2() {
 
 // 3. Условные операторы. Найти суммы только положительных из трех чисел
 
-function f1_3(a, b, c) {
+function ifSumPositiveOfNumber (a, b, c) {
+
     var sum = 0;
 
     if (a > 0) {
@@ -52,25 +52,22 @@ function f1_3(a, b, c) {
 
 // 4. Условные операторы. Посчитать выражение макс(а*б*с, а+б+с)+3
 
-function f1_4() {
-    let a = +prompt('Enter a:', '');
-    let b = +prompt('Enter b:', '');
-    let c = +prompt('Enter c:', '');
+function ifMaxExpression (a, b, c) {
+
     if (a * b * c >= a + b + c) {
         var rez = a * b * c + 3;
         console.log(rez);
-        document.write(rez);
     }
     else {
         var rez = (a + b + c) + 3;
         console.log(rez);
-        document.write(rez);
     }
 }
 
 // 5. Условные операторы. Написать программу определения оценки студента по его рейтингу
 
-function f1_5(studMark) {
+function RankStudent(studMark) {
+
     if (studMark >= 0 && studMark <= 19) {
         console.log("Оценка студента F");
     }
@@ -96,7 +93,8 @@ function f1_5(studMark) {
 
 // 1. Циклы. Найти сумму четных чисел и их количество в диапазоне от 1 до 99
 
-function f2_1() {
+function sumOfEvenNumber1_99 () {
+
     var sum = 0, quantity = 0;
     for (var i = 0; i < 99; i++) {
         if (i % 2 == 0) {
@@ -110,12 +108,10 @@ function f2_1() {
 
 // 2. Циклы. Проверить простое ли число? (число называется простым, если оно делится только само на себя и на 1)
 
-function f2_2() {
+function checkNumberOfSimple (x) {
 
-    var x = +prompt("Enter number: ");
     if (x < 2) {
         console.log('Введенное число ' + x + ' составное!');
-        document.write('Введенное число ' + x + ' составное!');
         return;
     }
 
@@ -124,14 +120,12 @@ function f2_2() {
     for (var i = 2; i <= q; i++) {
         if (x % i == 0) {
             console.log('Введенное число ' + x + ' составное!');
-            document.write('Введенное число ' + x + ' составное!');
             return;
         }
     }
 
     console.log('Введенное число ' + x + ' простое!');
-    document.write('Введенное число ' + x + ' простое!');
-    return;
+
 }
 
 // 3. Циклы.Найти корень натурального числа с точностью до целого (рассмотреть вариант последовательного подбора и
@@ -139,7 +133,8 @@ function f2_2() {
 
 // Вариант последовательного подбора
 
-function sqrtChecking(a) {
+function sqrtChecking (a) {
+
     var i = 1;
     while (i * i <= a) {
         i++;
@@ -148,7 +143,8 @@ function sqrtChecking(a) {
 }
 
 // Метод бинарного поиска
-function sqrtBinSearch(a) {
+function sqrtBinSearch (a) {
+
     var i = a;
 
     while (i * i > a) {
@@ -163,21 +159,19 @@ function sqrtBinSearch(a) {
 
 // 4. Циклы. Вычислить факториал числа n. n! = 1*2*…*n-1*n;!
 
-function f2_4() {
-
-    var n = +prompt('Enter number: ', '');
+function calcFactorial (n) {
 
     function factorial(n) {
         return (n != 1) ? n * factorial(n - 1) : 1;
     }
 
     console.log('Факториал числа ' + n + ' равен: ' + factorial(n));
-    document.write('Факториал числа ' + n + ' равен: ' + factorial(n));
 }
 
 // 5. Циклы.Посчитать сумму цифр заданного числа
 
-function f2_5(num) {
+function calcSumOfNumber (num) {
+
     var sum = 0, tmp;
     while (num) {
         tmp = num % 10;
@@ -190,20 +184,22 @@ function f2_5(num) {
 /* 6. Циклы. Вывести число, которое является зеркальным отображением последовательности цифр заданного числа,
  например, задано число 123, вывести 321. */
 
-function f2_6() {
+function logReverseOfNumber(number) {
 
-    var number = prompt('Enter number: ');
-    var rezult = number.split('').reverse().join('');
-    document.write(rezult);
-    console.log(rezult);
+    number = number.toString();
+    var reverse = '';
+    for (var i = number.length - 1; i >= 0; i--) {
+        reverse += number.charAt(i);
+    }
+    console.log(reverse);
 }
 
 // 1. Одномерные массивы. Найти минимальный элемент массива
 
-function f3_1() {
+function minElemOfMas (masLenght) {
 
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
     var maxEl;
     var minEl;
 
@@ -220,14 +216,14 @@ function f3_1() {
     }
 
     console.log('Минимальный элемент массива - ' + mas + ' ==> ' + minEl);
-    document.write('Минимальный элемент массива - ' + mas + ' ==> ' + minEl);
 }
 
 // 2. Одномерные массивы. Найти максимальный элемент массива
 
-function f3_2() {
+function maxElemOfMas (masLenght) {
+
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
     var maxEl;
     var minEl;
 
@@ -244,14 +240,14 @@ function f3_2() {
     }
 
     console.log('Максимальный элемент массива - ' + mas + ' ==> ' + maxEl);
-    document.write('Максимальный элемент массива - ' + mas + ' ==> ' + maxEl);
 }
 
 // 3. Одномерные массивы. Найти индекс минимального элемента массива
 
-function f3_3() {
+function minIndexOfMas (masLenght) {
+
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
     var maxEl;
     var minEl;
 
@@ -263,14 +259,14 @@ function f3_3() {
     var min = Math.min.apply(null, mas);
 
     console.log('Индекс минимального элемента массива -  ' + mas + ' ==> ' + mas.indexOf(min));
-    document.write('Индекс минимального элемента массива -  ' + mas + ' ==> ' + mas.indexOf(min));
 }
 
 // 4. Одномерные массивы. Найти индекс максимального элемента массива
 
-function f3_4() {
+function maxIndexOfMas (masLenght) {
+
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
     var maxEl;
     var minEl;
 
@@ -282,15 +278,14 @@ function f3_4() {
     var max = Math.max.apply(null, mas);
 
     console.log('Индекс максимального элемента массива -  ' + mas + ' ==> ' + mas.indexOf(max));
-    document.write('Индекс максимального элемента массива -  ' + mas + ' ==> ' + mas.indexOf(max));
 }
 
 // 5. Одномерные массивы. Посчитать сумму элементов массива с нечетными индексами
 
-function f3_5() {
+function calcSumElemOddOfMas (masLenght) {
 
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
     var summ = 0;
 
     for (i = 0; i <= iterator; i++) {
@@ -310,9 +305,9 @@ function f3_5() {
 
 // 6. Одномерные массивы. Сделать реверс массива (массив в обратном направлении)
 
-function f3_6() {
+function reverseOfMas (masLenght) {
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
 
     for (i = 0; i <= iterator; i++) {
         var el = +prompt('Enter number: ', '');
@@ -320,15 +315,14 @@ function f3_6() {
     }
 
     console.log('Реверс массива -  ' + mas + ' ==> ' + mas.reverse());
-    document.write('Реверс массива -  ' + mas + ' ==> ' + mas.reverse());
 }
 
 // 7. Одномерные массивы. Посчитать количество нечетных элементов массива.
 
-function f3_7() {
+function sumOddElemOfMas (masLenght) {
 
     var mas = [];
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
     var summ = 0;
 
     for (i = 0; i <= iterator; i++) {
@@ -350,14 +344,14 @@ function f3_7() {
 // 8. Одномерные массивы. Поменять местами первую и вторую половину массива, например, для массива 1 2 3 4,
 // результат 3 4 1 2
 
-function f3_8() {
+function replacePartsOfMas (masLenght) {
 
     var mas = [];
     var mas1 = [];
     var mas2 = [];
     var masRez = [];
 
-    var iterator = +prompt('Сколько элементов в массиве ?', '') - 1;
+    var iterator = masLenght - 1;
 
     for (i = 0; i <= iterator; i++) {
         var el = +prompt('Enter number: ', '');
@@ -385,7 +379,6 @@ function f3_8() {
     masRez = [...mas2, ...mas1];
 
     console.log('Замена местами половин массива -  ' + masRez + ' ==> ' + mas);
-    document.write('Замена местами половин массива -  ' + masRez + ' ==> ' + mas);
 }
 
 
@@ -393,7 +386,7 @@ function f3_8() {
 
 // bubble
 
-function bubbleSort(arr) {
+function bubbleSorted (arr) {
     var n = arr.length;
     for (var i = 0; i < n - 1; i++) {
         for (var j = 0; j < n - 1 - i; j++) {
@@ -409,7 +402,7 @@ function bubbleSort(arr) {
 
 // SelectSort
 
-function selectionSort(arr) {
+function selectionSorted (arr) {
     var n = arr.length;
     for (var i = 0; i < n - 1; i++) {
         var min = i;
@@ -426,7 +419,7 @@ function selectionSort(arr) {
 
 // InsertSort
 
-function insertionSort(arr) {
+function insertionSorted (arr) {
     var n = arr.length;
     for (var i = 0; i < n; i++) {
         var v = arr[i], j = i - 1;
@@ -443,7 +436,7 @@ function insertionSort(arr) {
 
 // quick
 
-function QuickSort(arr, left = 0, right = arr.length - 1) {
+function quickSorted (arr, left = 0, right = arr.length - 1) {
     let len = arr.length,
         index;
 
@@ -452,15 +445,14 @@ function QuickSort(arr, left = 0, right = arr.length - 1) {
         index = partition(arr, left, right);
 
         if (left < index - 1) {
-            QuickSort(arr, left, index - 1);
+            quickSorted(arr, left, index - 1);
         }
 
         if (index < right) {
-            QuickSort(arr, index, right);
+            quickSorted(arr, index, right);
         }
 
     }
-    document.write(arr);
     return arr;
 
 }
@@ -517,7 +509,7 @@ function merge(leftArr, rightArr) {
     return sortedArr;
 }
 
-function mergesort(arr) {
+function mergeSorted (arr) {
     if (arr.length < 2) {
         return arr;
     }
@@ -525,17 +517,15 @@ function mergesort(arr) {
         var midpoint = parseInt(arr.length / 2);
         var leftArr = arr.slice(0, midpoint);
         var rightArr = arr.slice(midpoint, arr.length);
-        return merge(mergesort(leftArr), mergesort(rightArr));
+        return merge(mergeSorted(leftArr), mergeSorted(rightArr));
     }
 }
-
-//console.log('This should be the sorted array!')
-//console.log(mergesort(unsortedArr));
 
 
 // Shell
 
-function shellSort(arr) {
+function shellSorted (arr) {
+
     var increment = arr.length / 2;
     while (increment > 0) {
         for (i = increment; i < arr.length; i++) {
@@ -559,10 +549,10 @@ function shellSort(arr) {
     return arr;
 }
 
-//console.log(shellSort(unsortedArr));
+
 
 // Heap
-function Heap() {
+function heapSorted () {
 
     var array_length;
 
@@ -611,13 +601,12 @@ function Heap() {
 
     heapSort(unsortedArr);
     console.log(unsortedArr);
-    document.write(heapSort(unsortedArr));
 
 }
 
 // 1. Функции. Получить строковое название дня недели по номеру дня.
 
-function f4_1dayOfTheWeek(dayNumber) {
+function dayOfNumber (dayNumber) {
 
     if (dayNumber < 1 || dayNumber > 7) {
         console.log("Задано неверное значение");
@@ -629,18 +618,362 @@ function f4_1dayOfTheWeek(dayNumber) {
 
 // 2. Функции. Найти расстояние между двумя точками в двухмерном декартовом пространстве.
 
-function f4_2Decart() {
+function distOfPointDecart (x1, y1, x2, y2) {
 
-    var x1 = +prompt('Enter x1: ', '');
-    var y1 = +prompt('Enter y1: ', '');
-    var x2 = +prompt('Enter x2: ', '');
-    var y2 = +prompt('Enter y2: ', '');
     var a = x1 - x2;
     var b = y1 - y2;
 
     var c = Math.sqrt(a * a + b * b);
 
     console.log('Расстояние между точками: ' + c);
-    document.write('Расстояние между точками: ' + c);
 
 }
+
+// 3. Функции. Вводим число(0-999), получаем строку с прописью числа. Для задания 1 расширить диапазон до 999 миллиардов
+
+/**
+ * Преобразует строку в массив
+ */
+
+function stringSplit (string, length) {
+
+    var chunks, len, pos;
+
+    string = (string == null) ? "" : string;
+    length = (length == null) ? 1 : length;
+
+    var chunks = [];
+    var pos = 0;
+    var len = string.length;
+
+    while (pos < len) {
+        chunks.push(string.slice(pos, pos += length));
+    }
+
+    return chunks;
+}
+/**
+ * Склоняем словоформу
+ */
+
+function morphology (number, titles) {
+    var cases = [2, 0, 1, 1, 1, 2];
+    return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[Math.min(number % 10, 5)]];
+}
+/**
+ * Возвращает сумму прописью
+ */
+
+function numberToString (num) {
+
+    var defTranslite = {
+        null: 'ноль',
+        a1: ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
+        a2: ['одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
+        a10: ['десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'],
+        a20: ['двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'],
+        a100: ['сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'],
+        uceloe: ['целая', 'целых', 'целых'],
+        udesyatichnoe: ['десятая', 'десятых', 'десятых'],
+        u3: ['тысяча', 'тысячи', 'тысяч'],
+        u2: ['миллион', 'миллиона', 'миллионов'],
+        u1: ['миллиард', 'миллиарда', 'миллиардов'],
+    };
+
+    var numOfChanks1, numOfChanks2, numOfChanks3, desyatichnoe, outTransliteNumber, celoe, numOfChanks, zeros,
+        reference, referenceChanks, referenceChanksNumber, varMorfology;
+
+    reference = parseFloat(num).toFixed(1).split('.'),
+        celoe = reference[0],
+        desyatichnoe = reference[1];
+
+    var leadingZeros = 12 - celoe.length;
+
+    if (leadingZeros < 0) {
+        return false;
+    }
+
+    var zeros = [];
+
+    while (leadingZeros--) {
+        zeros.push('0');
+    }
+
+    celoe = zeros.join('') + celoe;
+
+    var outTransliteNumber = [];
+
+    if (celoe > 0) {
+
+        // Разбиваем число по три символа
+        referenceChanks = stringSplit(celoe, 3);
+
+        for (var i = -1; i < referenceChanks.length; i++) {
+
+            numOfChanks = referenceChanks[i];
+
+            if (!(numOfChanks > 0)) {
+                continue;
+            }
+
+            referenceChanksNumber = stringSplit(numOfChanks, 1),
+                numOfChanks1 = parseInt(referenceChanksNumber[0]),
+                numOfChanks2 = parseInt(referenceChanksNumber[1]),
+                numOfChanks3 = parseInt(referenceChanksNumber[2]);
+
+            outTransliteNumber.push(defTranslite.a100[numOfChanks1 - 1]); // 1xx-9xx
+
+            varMorfology = (i + 1 == 3) ? 'a2' : 'a2';
+
+            if (numOfChanks2 > 1) {
+                outTransliteNumber.push(defTranslite.a20[numOfChanks2 - 2] + (numOfChanks3 > 0 ? ' ' + defTranslite[varMorfology][numOfChanks3 - 1] : '')); // 20-99
+            } else {
+                outTransliteNumber.push(numOfChanks2 > 0 ? defTranslite.a10[numOfChanks3] : defTranslite[varMorfology][numOfChanks3 - 1]); // 10-19 | 1-9
+            }
+
+            if (referenceChanks.length > i + 1) {
+                var name = defTranslite['u' + (i + 1)];
+                outTransliteNumber.push(morphology(numOfChanks, name));
+            }
+        }
+    } else {
+        outTransliteNumber.push(defTranslite.null);
+    }
+
+    // Дописываем название "целые"
+    outTransliteNumber.push(morphology(celoe, defTranslite.uceloe));
+
+    // Дописываем название "десятые"
+    outTransliteNumber.push(desyatichnoe + ' ' + morphology(desyatichnoe, defTranslite.udesyatichnoe));
+
+    // Объединяем маcсив в строку, удаляем лишние пробелы и возвращаем результат
+    return outTransliteNumber.join(' ').replace(RegExp(' {2,}', 'g'), ' ').trimLeft();
+}
+
+
+// 4. Функции. Вводим строку, которая содержит число, написанное прописью (0-999). Получить само число. Для задания 2 расширить диапазон до 999 миллиардов
+
+
+function stringToNumbers(str) {
+
+    var numbers = calculate();
+
+    function digitsSplit(writtenDigits) {
+        let arr = [];
+        arr = writtenDigits.split(" ");
+        for (var words = 0; words < arr.length; words++) {
+            arr[words] = arr[words].replace(/[^а-яА-Я]/g, "");
+        }
+        var numbersDigits = ([["миллиард", "миллиарда", "миллиардов"],
+            ["миллион", "миллиона", "миллионов"],
+            ["тысяча", "тысячи", "тысяч"]]);
+        var parsArr = [];
+        var x = 0;
+        var flagNumberDigits = 0;
+        parsArr[0] = 0;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < 3; j++) {
+                for (let k = 0; k < 3; k++) {
+                    if (arr[i] === numbersDigits[j][k]) {
+                        x++;
+
+                        if (arr[i] === numbersDigits[0][k]) {
+                            flagNumberDigits = 1000000000;
+                        }
+                        if (arr[i] === numbersDigits[1][k]) {
+                            flagNumberDigits = 1000000;
+                        }
+                        if (arr[i] === numbersDigits[2][k]) {
+                            flagNumberDigits = 1000;
+                        }
+                        break;
+                    }
+                }
+            }
+            if (parsArr[x] == undefined) {
+                parsArr[x - 1] *= flagNumberDigits;
+                parsArr[x] = 0;
+            }
+            parsArr[x] += checkString(arr[i]);
+        }
+        return parsArr;
+    }
+
+    function calculate(someArr = digitsSplit(str)) {
+        let sum = 0;
+        for (let i = 0; i < someArr.length; i++) {
+            sum += someArr[i];
+        }
+        return sum;
+    }
+
+    function checkString(digit) {
+        let sDig = singleDigits(digit);
+        let dDig10to19 = doubleDigits_10to19(digit);
+        let dDig = doubleDigits(digit);
+        let hDig = hundredDigits(digit);
+        if (sDig != null) {
+            return sDig;
+        }
+        else if (dDig10to19 != null) {
+            return dDig10to19;
+        }
+        else if (dDig != null) {
+            return dDig;
+        }
+        else if (hDig != null) {
+            return hDig;
+        }
+        else
+            return 0;
+    }
+
+    //Единицы
+    function singleDigits(digit) {
+        switch (digit) {
+            case ("один"):
+                return (1);
+
+            case ("одна"):
+                return (1);
+
+            case "два":
+                return (2);
+
+            case "две":
+                return (2);
+
+            case "три":
+                return (3);
+
+            case "четыре":
+                return (4);
+
+            case "пять":
+                return (5);
+
+            case "шесть":
+                return (6);
+
+            case "семь":
+                return (7);
+
+            case "восемь":
+                return (8);
+
+            case "девять":
+                return (9);
+
+            default:
+                return null;
+        }
+    }
+
+    //Числа от 10 до 19
+    function doubleDigits_10to19(digit) {
+        switch (digit) {
+            case "десять":
+                return (10);
+
+            case "одинадцать":
+                return (11);
+
+            case "двенадцать":
+                return (12);
+
+            case "тринадцать":
+                return (13);
+
+            case "четырнадцать":
+                return (14);
+
+            case "пятнадцать":
+                return (15);
+
+            case "шестнадцать":
+                return (16);
+
+            case "семнадцать":
+                return (17);
+
+            case "восемнадцать":
+                return (18);
+
+            case "девятнадцать":
+                return (19);
+
+            default:
+                return null;
+        }
+    }
+
+    //Числа от 20 до 90
+    function doubleDigits(digit) {
+        switch (digit) {
+            case "двадцать":
+                return (20);
+
+            case "тридцать":
+                return (30);
+
+            case "сорок":
+                return (40);
+
+            case "пятьдесят":
+                return (50);
+
+            case "шестьдесят":
+                return (60);
+
+            case "семьдесят":
+                return (70);
+
+            case "восемьдесят":
+                return (80);
+
+            case "девяносто":
+                return (90);
+
+            default:
+                return null;
+        }
+    }
+
+    //Сотни
+    function hundredDigits(digit) {
+        switch (digit) {
+            case "сто":
+                return (100);
+
+            case "двести":
+                return (200);
+
+            case "триста":
+                return (300);
+
+            case "четыреста":
+                return (400);
+
+            case "пятьсот":
+                return (500);
+
+            case "шестьсот":
+                return (600);
+
+            case "семьсот":
+                return (700);
+
+            case "восемьсот":
+                return (800);
+
+            case "девятьсот":
+                return (900);
+
+            default:
+                return null;
+        }
+    }
+
+    return numbers;
+}
+
